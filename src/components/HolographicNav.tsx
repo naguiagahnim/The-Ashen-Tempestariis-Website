@@ -29,92 +29,96 @@ export default function HolographicNav() {
         {isExpanded ? <X size={20} /> : <Menu size={20} />}
       </button>
 
-      <motion.div
-        className="railjack-nav z-20 h-full md:w-64 backdrop-blur-sm"
-        initial={{ width: 0 }}
-        animate={{ width: isExpanded ? "16rem" : 0 }}
-        transition={{ duration: 0.3 }}
-        style={{ display: isExpanded ? "block" : "none" }}
-      >
-        <div className="h-full w-64 bg-black/80 border-r border-vert-tempestarii/30 flex flex-col">
-          <div className="p-4 border-b border-vert-tempestarii/30 flex items-center">
-            <div className="h-10 w-10 rounded-full bg-vert-tempestarii/20 border border-vert-tempestarii/50 flex items-center justify-center mr-3">
-              <img src="/images/emblems/logo_color_circle.png?" className="h-9 w-9 text-vert-tempestarii" />
-            </div>
-            <div>
-              <h1 className="text-sm font-bold tracking-wider text-vert-tempestarii">
-                THE <span className="text-white">ASHEN </span>
-              </h1>
-              <h2 className="text-xs text-white/70">TEMPESTARIIS</h2>
-            </div>
-          </div>
+      <AnimatePresence>
+        {isExpanded && window.innerWidth < 768 && (
+          <motion.div
+            className="fixed inset-0 z-20 md:hidden"
+            initial={{ width: 0 }}
+            animate={{ width: "16rem" }}
+            exit={{ width: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="h-full w-64 bg-black/80 border-r border-vert-tempestarii/30 flex flex-col">
+              <div className="p-4 border-b border-vert-tempestarii/30 flex items-center">
+                <div className="h-10 w-10 rounded-full bg-vert-tempestarii/20 border border-vert-tempestarii/50 flex items-center justify-center mr-3">
+                  <img src="/images/emblems/logo_color_circle.png?" className="h-9 w-9 text-vert-tempestarii" />
+                </div>
+                <div>
+                  <h1 className="text-sm font-bold tracking-wider text-vert-tempestarii">
+                    THE <span className="text-white">ASHEN </span>
+                  </h1>
+                  <h2 className="text-xs text-white/70">TEMPESTARIIS</h2>
+                </div>
+              </div>
 
-          <nav className="flex-1 p-4 overflow-y-auto">
-            <div className="text-xs text-vert-tempestarii/70 mb-3 uppercase tracking-wider">Navigation</div>
-            <ul className="space-y-1">
-              {links.map((link) => (
-                <li key={link.path}>
-                  <Link
-                    to={link.path}
-                    onClick={() => setIsExpanded(false)}
-                    className={`
-                      group relative flex items-center space-x-3 px-3 py-2 rounded-sm transition-all duration-200
-                      ${
-                        location.pathname === link.path
-                          ? "bg-vert-tempestarii/20 text-vert-tempestarii"
-                          : "text-gray-400 hover:bg-vert-tempestarii/10 hover:text-vert-tempestarii"
-                      }
-                    `}
-                  >
-                    <div
-                      className={`
-                      absolute left-0 top-0 bottom-0 w-0.5 bg-vert-tempestarii transition-all duration-300
-                      ${location.pathname === link.path ? "opacity-100" : "opacity-0 group-hover:opacity-50"}
-                    `}
-                    ></div>
-                    <div className="flex items-center justify-center w-6">{link.icon}</div>
-                    <span>{link.label}</span>
+              <nav className="flex-1 p-4 overflow-y-auto">
+                <div className="text-xs text-vert-tempestarii/70 mb-3 uppercase tracking-wider">Navigation</div>
+                <ul className="space-y-1">
+                  {links.map((link) => (
+                    <li key={link.path}>
+                      <Link
+                        to={link.path}
+                        onClick={() => setIsExpanded(false)}
+                        className={`
+                          group relative flex items-center space-x-3 px-3 py-2 rounded-sm transition-all duration-200
+                          ${
+                            location.pathname === link.path
+                              ? "bg-vert-tempestarii/20 text-vert-tempestarii"
+                              : "text-gray-400 hover:bg-vert-tempestarii/10 hover:text-vert-tempestarii"
+                          }
+                        `}
+                      >
+                        <div
+                          className={`
+                          absolute left-0 top-0 bottom-0 w-0.5 bg-vert-tempestarii transition-all duration-300
+                          ${location.pathname === link.path ? "opacity-100" : "opacity-0 group-hover:opacity-50"}
+                        `}
+                        ></div>
+                        <div className="flex items-center justify-center w-6">{link.icon}</div>
+                        <span>{link.label}</span>
 
-                    {location.pathname === link.path && (
-                      <motion.div
-                        layoutId="nav-indicator"
-                        className="absolute right-2 w-1.5 h-1.5 rounded-full bg-vert-tempestarii"
-                        initial={{ scale: 0 }}
-                        animate={{ scale: 1 }}
-                        transition={{ duration: 0.2 }}
-                      />
-                    )}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
+                        {location.pathname === link.path && (
+                          <motion.div
+                            layoutId="nav-indicator-mobile"
+                            className="absolute right-2 w-1.5 h-1.5 rounded-full bg-vert-tempestarii"
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ duration: 0.2 }}
+                          />
+                        )}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
 
-          <div className="p-4 border-t border-vert-tempestarii/30">
-            <div className="flex items-center justify-between mb-2">
-              <div className="text-xs text-vert-tempestarii/70">STATUT SYSTÈME</div>
-              <div className="text-xs text-vert-tempestarii/70">
-                <span className="animate-pulse">◉</span> ACTIF
+              <div className="p-4 border-t border-vert-tempestarii/30">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="text-xs text-vert-tempestarii/70">STATUT SYSTÈME</div>
+                  <div className="text-xs text-vert-tempestarii/70">
+                    <span className="animate-pulse">◉</span> ACTIF
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-gray-400">Boucliers</span>
+                    <span className="text-vert-tempestarii">100%</span>
+                  </div>
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-gray-400">Moteurs</span>
+                    <span className="text-vert-tempestarii">98%</span>
+                  </div>
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-gray-400">Armement</span>
+                    <span className="text-vert-tempestarii">100%</span>
+                  </div>
+                </div>
               </div>
             </div>
-
-            <div className="space-y-2">
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-gray-400">Boucliers</span>
-                <span className="text-vert-tempestarii">100%</span>
-              </div>
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-gray-400">Moteurs</span>
-                <span className="text-vert-tempestarii">98%</span>
-              </div>
-              <div className="flex items-center justify-between text-xs">
-                <span className="text-gray-400">Armement</span>
-                <span className="text-vert-tempestarii">100%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="hidden md:flex h-full">
         <div className="h-full w-16 bg-black/80 border-r border-vert-tempestarii/30 flex flex-col items-center py-4">
@@ -156,7 +160,7 @@ export default function HolographicNav() {
             onClick={toggleNav}
             className="mt-auto w-10 h-10 rounded-lg text-gray-500 hover:bg-vert-tempestarii/10 hover:text-vert-tempestarii transition-all duration-200 flex items-center justify-center"
           >
-            <Menu size={20} />
+            {isExpanded ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
@@ -206,17 +210,10 @@ export default function HolographicNav() {
                   </ul>
                 </nav>
 
-                <div className="mt-auto pt-4 border-t border-vert-tempestarii/30">
-                  <div className="text-xs text-vert-tempestarii/70 mb-2">STATUT SYSTÈME</div>
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-gray-400">Boucliers</span>
-                      <span className="text-vert-tempestarii">100%</span>
-                    </div>
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="text-gray-400">Moteurs</span>
-                      <span className="text-vert-tempestarii">98%</span>
-                    </div>
+                <div className="flex items-center justify-between mb-2">
+                  <div className="text-xs text-vert-tempestarii/70">STATUT SYSTÈME</div>
+                  <div className="text-xs text-vert-tempestarii/70">
+                    <span className="animate-pulse">◉</span> ACTIF
                   </div>
                 </div>
               </div>

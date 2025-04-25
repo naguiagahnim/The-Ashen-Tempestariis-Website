@@ -7,7 +7,7 @@ const tools = [
     id: 1,
     name: "Céphalon Poseidis",
     category: "Discord",
-    description: "Bot Discord pour la gestion du clan et des alertes Warframe",
+    description: "Bot Discord pour les informations sur l'état actuel du jeu",
     icon: <Bot className="h-8 w-8" />,
     features: [
       "Afficher le weekly reset hebdomadaire",

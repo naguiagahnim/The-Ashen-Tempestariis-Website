@@ -17,6 +17,7 @@ import Builds from "./pages/Builds.tsx"
 function App() {
   const location = useLocation()
   const [isLoading, setIsLoading] = useState(true)
+  const [loadingComplete, setLoadingComplete] = useState(false)
   const [systemStatus, setSystemStatus] = useState({
     shields: 100,
     engines: 98,
@@ -25,21 +26,32 @@ function App() {
   })
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false)
+    // Mark loading as complete after 2.5 seconds
+    const loadingTimer = setTimeout(() => {
+      setLoadingComplete(true)
     }, 2500)
-    return () => clearTimeout(timer)
+
+    // Actually remove the loading screen after a fade-out delay
+    const fadeOutTimer = setTimeout(() => {
+      setIsLoading(false)
+    }, 3300) // 2500ms + 800ms for fade out
+
+    return () => {
+      clearTimeout(loadingTimer)
+      clearTimeout(fadeOutTimer)
+    }
   }, [])
 
   useEffect(() => {
     const interval = setInterval(() => {
       setSystemStatus((prev) => ({
-        shields: Math.max(95, Math.min(100, prev.shields + (Math.random() * 2 - 1))),
-        engines: Math.max(95, Math.min(100, prev.engines + (Math.random() * 2 - 1))),
-        weapons: Math.max(95, Math.min(100, prev.weapons + (Math.random() * 2 - 1))),
-        comms: Math.max(90, Math.min(100, prev.comms + (Math.random() * 3 - 1.5))),
+        // Increased variation ranges for more noticeable changes
+        shields: Math.max(92, Math.min(100, prev.shields + (Math.random() * 5 - 2.5))),
+        engines: Math.max(90, Math.min(100, prev.engines + (Math.random() * 6 - 3))),
+        weapons: Math.max(93, Math.min(100, prev.weapons + (Math.random() * 4 - 2))),
+        comms: Math.max(85, Math.min(100, prev.comms + (Math.random() * 7 - 3.5))),
       }))
-    }, 5000)
+    }, 3000) // Reduced interval for more frequent updates
     return () => clearInterval(interval)
   }, [])
 
@@ -51,8 +63,15 @@ function App() {
         <motion.div
           className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-black"
           initial={{ opacity: 1 }}
+          animate={{
+            opacity: loadingComplete ? 0 : 1,
+            backgroundColor: loadingComplete ? "rgba(0, 0, 0, 1)" : "rgba(0, 0, 0, 1)",
+          }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{
+            duration: loadingComplete ? 0.8 : 0,
+            ease: "easeInOut",
+          }}
         >
           <motion.div
             className="w-32 h-32 mb-8 relative"
