@@ -26,15 +26,13 @@ function App() {
   })
 
   useEffect(() => {
-    // Mark loading as complete after 2.5 seconds
     const loadingTimer = setTimeout(() => {
       setLoadingComplete(true)
     }, 2500)
 
-    // Actually remove the loading screen after a fade-out delay
     const fadeOutTimer = setTimeout(() => {
       setIsLoading(false)
-    }, 3300) // 2500ms + 800ms for fade out
+    }, 3300)
 
     return () => {
       clearTimeout(loadingTimer)
@@ -45,13 +43,12 @@ function App() {
   useEffect(() => {
     const interval = setInterval(() => {
       setSystemStatus((prev) => ({
-        // Increased variation ranges for more noticeable changes
         shields: Math.max(92, Math.min(100, prev.shields + (Math.random() * 5 - 2.5))),
         engines: Math.max(90, Math.min(100, prev.engines + (Math.random() * 6 - 3))),
         weapons: Math.max(93, Math.min(100, prev.weapons + (Math.random() * 4 - 2))),
         comms: Math.max(85, Math.min(100, prev.comms + (Math.random() * 7 - 3.5))),
       }))
-    }, 3000) // Reduced interval for more frequent updates
+    }, 3000)
     return () => clearInterval(interval)
   }, [])
 
