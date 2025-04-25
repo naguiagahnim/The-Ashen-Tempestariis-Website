@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { MessageSquare, Youtube, Twitch, ExternalLink, Radio } from "lucide-react"
+import { MessageSquare, Youtube, Twitch, ExternalLink } from "lucide-react"
 import Footer from "../components/Footer"
 
 const socialLinks = [
@@ -31,10 +31,6 @@ const socialLinks = [
     textColor: "text-[#9146FF]",
   },
 ]
-
-const handleContactClick = () => {
-  //À implémenter avec emailJS quand j'aurai le mail
-}
 
 const Contact = () => {
   return (
