@@ -32,6 +32,10 @@ const socialLinks = [
   },
 ]
 
+const handleContactClick = () => {
+  //À implémenter avec emailJS quand j'aurai le mail
+}
+
 const Contact = () => {
   return (
     <div className="min-h-full w-full text-white flex flex-col">
@@ -121,6 +125,7 @@ const Contact = () => {
                 className="w-full flex items-center justify-center space-x-2 bg-transparent border border-vert-tempestarii text-vert-tempestarii hover:bg-vert-tempestarii/20 px-4 py-2 rounded-sm"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
+                onClick={handleContactClick}
                 //Faut ajouter le onclick et l'envoi du mail
               >
                 <span>Envoyer le message</span>

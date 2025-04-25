@@ -9,7 +9,7 @@ const membres = [
     rank: "Capitaine",
     specialty: "Éclaireur des mers stellaires et bras droit de la Vierge Écorchée",
     joinDate: "2021-09-13",
-    avatar: "/placeholder.svg?height=100&width=100",
+    avatar: "/images/avatars/kyrn.png?height=100&width=100",
   },
   {
     id: 2,

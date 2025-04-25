@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import {Bot, Download, ExternalLink, Globe } from "lucide-react"
+import {Bot, Github, Globe } from "lucide-react"
 import Footer from "../components/Footer"
 
 const tools = [
@@ -38,9 +38,9 @@ const handleDlClick = () => {
   window.open("https://github.com/naguiagahnim?tab=repositories", "_blank");
 }
 
-const handleDocClick = () => {
+/*const handleDocClick = () => {
   window.open("https://the-ashen-tempestariis.vercel.app", "_blank");
-}
+}*/
 
 const Outils = () => {
   return (
@@ -80,7 +80,18 @@ const Outils = () => {
                       </span>
                       
                       <div className="flex items-center space-x-1">
-                        <span className={`inline-block w-2 h-2 rounded-full bg-${tool.statusColor}-500`}></span>
+                        <span
+                          className={`inline-block w-2 h-2 rounded-full ${
+                          tool.statusColor === "green"
+                            ? "bg-green-500"
+                            : tool.statusColor === "red"
+                            ? "bg-red-500"
+                            : tool.statusColor === "amber"
+                            ? "bg-amber-500"
+                            : "bg-gray-500"
+                        }`}
+                      />
+
                         <span className="text-xs text-gray-400">{tool.status}</span>
                       </div>
                     </div>
@@ -102,16 +113,18 @@ const Outils = () => {
                 </ul>
               </div>
               
-              <div className="grid grid-cols-2 gap-2 mt-4 pt-4 border-t border-vert-tempestarii/20">
+              <div className="grid grid-cols-1 gap-2 mt-4 pt-4 border-t border-vert-tempestarii/20">
                 <motion.button 
                   className="flex items-center justify-center space-x-2 bg-transparent border border-vert-tempestarii/50 text-vert-tempestarii hover:bg-vert-tempestarii/20 px-3 py-2 rounded-sm"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   onClick={handleDlClick}
                 >
-                  <Download className="h-4 w-4" />
-                  <span>Télécharger</span>
+                  <Github className="h-4 w-4" />
+                  <span>Github</span>
                 </motion.button>
+                
+                {/*À garder pour plus tard si j'écris de la doc
                 
                 <motion.button 
                   className="flex items-center justify-center space-x-2 bg-transparent border border-vert-tempestarii/50 text-vert-tempestarii hover:bg-vert-tempestarii/20 px-3 py-2 rounded-sm"
@@ -121,7 +134,7 @@ const Outils = () => {
                 >
                   <span>Documentation</span>
                   <ExternalLink className="h-4 w-4" />
-                </motion.button>
+                </motion.button>*/}
               </div>
             </div>
           </motion.div>
