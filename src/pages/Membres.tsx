@@ -33,7 +33,7 @@ const membres = [
     rank: "Briseur de coque",
     specialty: "Seraphin du silence et bras de la sérénité éphémère",
     joinDate: "2021-09-13",
-    avatar: "/placeholder.svg?height=100&width=100",
+    avatar: "/images/avatars/ranga.png?height=100&width=100",
   },
   {
     id: 4,
