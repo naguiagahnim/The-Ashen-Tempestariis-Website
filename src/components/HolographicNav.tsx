@@ -176,7 +176,7 @@ export default function HolographicNav() {
               <div className="h-full w-full flex flex-col p-4">
                 <div className="mb-6">
                   <h1 className="text-lg font-bold tracking-wider text-vert-tempestarii">
-                    THE<span className="text-white">ASHEN</span>
+                    THE <span className="text-white">ASHEN </span>
                   </h1>
                   <h2 className="text-sm text-white/70">TEMPESTARIIS</h2>
                 </div>
