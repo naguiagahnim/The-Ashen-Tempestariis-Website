@@ -25,7 +25,7 @@ const membres = [
     rank: "Capitaine",
     specialty: "Porteur de feu vengeur et d’acier pénitent",
     joinDate: "2021-09-13",
-    avatar: "/placeholder.svg?height=100&width=100",
+    avatar: "/images/avatars/hephai.png?height=100&width=100",
   },
   {
     id: 4,
