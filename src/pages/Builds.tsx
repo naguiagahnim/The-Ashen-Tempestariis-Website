@@ -11,7 +11,7 @@ const builds = [
     author: "Agahnim",
     rating: 3.5,
     forma: 5,
-    description: "High strength Revenant build for high mesmer skin charges to stay invulnerable and status immune, reave to one shot enemies and optoinal Roar in helminth to boost reave and general weapon DPS",
+    description: "Build placeholder en attendant les autres",
     details: {
       mods: [
         "Growing Power", "Power Drift", 
@@ -23,90 +23,6 @@ const builds = [
         { name: "Efficacité", value: 155 },
         { name: "Portée", value: 100 },
         { name: "Force", value: 175 }
-      ]
-    }
-  },
-  {
-    id: 2,
-    name: "Saryn - Spores Spread",
-    category: "AoE",
-    author: "NyxNova",
-    rating: 4.9,
-    forma: 6,
-    description: "Propagation optimale des spores pour élimination en masse",
-    details: {
-      mods: [
-        "Portée Étirée", "Continuité", "Intensification", "Dérive Augmentée",
-        "Vitalité", "Adrenaline du Rage", "Acier des Ombrages", "Spores Régénérantes"
-      ],
-      stats: [
-        { name: "Force", value: 210 },
-        { name: "Durée", value: 155 },
-        { name: "Portée", value: 235 },
-        { name: "Efficacité", value: 90 }
-      ]
-    }
-  },
-  {
-    id: 3,
-    name: "Wisp - Support Buffs",
-    category: "Support",
-    author: "EmberFlame",
-    rating: 4.6,
-    forma: 3,
-    description: "Renforce l'équipe avec ses réservoirs pour des buffs optimaux",
-    details: {
-      mods: [
-        "Acier Vital", "Intensification Aveugle", "Portée Étirée", "Continuité Prolongée",
-        "Dérive Augmentée", "Streamline", "Rétablissement Rapide", "Réservoir Fulgurant"
-      ],
-      stats: [
-        { name: "Force", value: 265 },
-        { name: "Durée", value: 175 },
-        { name: "Portée", value: 190 },
-        { name: "Efficacité", value: 130 }
-      ]
-    }
-  },
-  {
-    id: 4,
-    name: "Mesa - Peacemaker",
-    category: "DPS",
-    author: "VoltSpeed",
-    rating: 4.8,
-    forma: 5,
-    description: "Build optimisé pour les Regulateurs de Mesa avec maximum de DPS",
-    details: {
-      mods: [
-        "Intensification Aveugle", "Balle-Fléchette", "Puissance du Pistolet", "Vitesse de Tir",
-        "Calibre Lourd", "Vitalité", "Streamline", "Mesa's Waltz"
-      ],
-      stats: [
-        { name: "Force", value: 245 },
-        { name: "Durée", value: 100 },
-        { name: "Portée", value: 70 },
-        { name: "Efficacité", value: 175 }
-      ]
-    }
-  },
-  {
-    id: 5,
-    name: "Nova - Molecular Prime",
-    category: "CC",
-    author: "FrostKing",
-    rating: 4.7,
-    forma: 4,
-    description: "Ralentissez ou accélérez vos ennemis selon vos besoins",
-    details: {
-      mods: [
-        "Continuité Prolongée", "Acier des Ombrages", "Intensification", "Courant Transitoire",
-        "Vitalité", "Streamline", "Constitution", "Nova Moléculaire"
-      ],
-      stats: [
-        { name: "Force", value: 145 },
-        { name: "Durée", value: 215 },
-        { name: "Portée", value: 125 },
-        { name: "Efficacité", value: 130 }
       ]
     }
   },
