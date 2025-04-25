@@ -15,7 +15,7 @@ const membres = [
     id: 2,
     name: "Oni le Kuvalique",
     rank: "Capitaine",
-    specialty: "Servant du Mur, héraut du Rouge",
+    specialty: "Moissonneur d’échos liés et vassal du Mur Affamé",
     joinDate: "2021-09-13",
     avatar: "/images/avatars/mitw.png?height=100&width=100",
   },
