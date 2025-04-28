@@ -41,7 +41,7 @@ export default function HolographicNav() {
             <div className="h-full w-64 bg-black/80 border-r border-vert-tempestarii/30 flex flex-col">
               <div className="p-4 border-b border-vert-tempestarii/30 flex items-center">
                 <div className="h-10 w-10 rounded-full bg-vert-tempestarii/20 border border-vert-tempestarii/50 flex items-center justify-center mr-3">
-                  <img src="/images/emblems/logo_color_circle.png?" className="h-9 w-9 text-vert-tempestarii" />
+                  <img src="/images/emblems/logo_color_circle.webp?" className="h-9 w-9 text-vert-tempestarii" />
                 </div>
                 <div>
                   <h1 className="text-sm font-bold tracking-wider text-vert-tempestarii">
@@ -123,7 +123,7 @@ export default function HolographicNav() {
       <div className="hidden md:flex h-full">
         <div className="h-full w-16 bg-black/80 border-r border-vert-tempestarii/30 flex flex-col items-center py-4">
           <div className="h-10 w-10 rounded-full bg-vert-tempestarii/20 border border-vert-tempestarii/50 flex items-center justify-center mb-8">
-            <img src="/images/emblems/logo_color_circle.png?" className="h-9 w-9 text-vert-tempestarii" />
+            <img src="/images/emblems/logo_color_circle.webp?" className="h-9 w-9 text-vert-tempestarii" />
           </div>
 
           <div className="flex-1 flex flex-col items-center space-y-6 pt-4">

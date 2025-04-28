@@ -6,7 +6,7 @@ const tools = [
   {
     id: 1,
     name: "Céphalon Poseidis",
-    category: "Discord",
+    category: "Bot Discord",
     description: "Bot Discord pour les informations sur l'état actuel du jeu",
     icon: <Bot className="h-8 w-8" />,
     features: [
@@ -14,6 +14,7 @@ const tools = [
       "Afficher les cycles actuels (Cetus, Duviri, Deimos...)",
       "Et bien d'autre à venir..."
     ],
+    linkToRepo: "https://github.com/naguiagahnim/CephalonPoseidis",
     status: "Hors-ligne",
     statusColor: "red"
   },
@@ -27,18 +28,20 @@ const tools = [
     features: [
       "Présenter le clan, ses membres, ses alliés et ses outils",
       "Présenter les builds crées par les membres",
-      "Permettre de candidater en tant que membre du clan"
+      "Permettre de trouver les canaux de contact du clan"
     ],
+    linkToRepo: "https://github.com/naguiagahnim/The-Ashen-Tempestariis-Website",
     status: "En ligne",
     statusColor: "green"
   },
 ]
 
-const handleDlClick = () => {
-  window.open("https://github.com/naguiagahnim?tab=repositories", "_blank");
+const handleDlClick = (link : string) => {
+  window.open(link, "_blank");
 }
 
-/*const handleDocClick = () => {
+/*Same ici
+  const handleDocClick = () => {
   window.open("https://the-ashen-tempestariis.vercel.app", "_blank");
 }*/
 
@@ -118,7 +121,7 @@ const Outils = () => {
                   className="flex items-center justify-center space-x-2 bg-transparent border border-vert-tempestarii/50 text-vert-tempestarii hover:bg-vert-tempestarii/20 px-3 py-2 rounded-sm"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={handleDlClick}
+                  onClick={() => handleDlClick((tool.linkToRepo || "https://github.com/naguiagahnim?tab=repositories"))}
                 >
                   <Github className="h-4 w-4" />
                   <span>Github</span>

@@ -8,7 +8,7 @@ const allies = [
     leader: "Aucun",
     alliance: "Générale",
     members: 15,
-    emblem: "/images/emblems/lotus.png?height=100&width=100",
+    emblem: "/images/emblems/lotus.webp?height=100&width=100",
     description: "Nos premiers alliés",
   },
 ]

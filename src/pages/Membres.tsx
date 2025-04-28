@@ -9,7 +9,7 @@ const membres = [
     rank: "Capitaine",
     specialty: "Éclaireur des mers stellaires et bras droit de la Vierge Écorchée",
     joinDate: "2021-09-13",
-    avatar: "/images/avatars/kyrn.png?height=100&width=100",
+    avatar: "/images/avatars/kyrn.webp?height=100&width=100",
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const membres = [
     rank: "Capitaine",
     specialty: "Moissonneur d’échos liés et vassal du Mur Affamé",
     joinDate: "2021-09-13",
-    avatar: "/images/avatars/mitw.png?height=100&width=100",
+    avatar: "/images/avatars/oni.webp?height=100&width=100",
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const membres = [
     rank: "Capitaine",
     specialty: "Porteur de feu vengeur et d’acier pénitent",
     joinDate: "2021-09-13",
-    avatar: "/images/avatars/hephai.png?height=100&width=100",
+    avatar: "/images/avatars/hephai.webp?height=100&width=100",
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ const membres = [
     rank: "Briseur de coque",
     specialty: "Seraphin du silence et bras de la sérénité éphémère",
     joinDate: "2021-09-13",
-    avatar: "/images/avatars/ranga.png?height=100&width=100",
+    avatar: "/images/avatars/ranga.webp?height=100&width=100",
   },
   {
     id: 4,
@@ -41,7 +41,7 @@ const membres = [
     rank: "Haute-Inspirée du Cercle des Sons et des Formes",
     specialty: "Évocation des formes invisibles et résonance des mondes muets",
     joinDate: "2021-09-14",
-    avatar: "/images/avatars/zarionis.png?height=100&width=100",
+    avatar: "/images/avatars/agahnim.webp?height=100&width=100",
   },
 ]
 
