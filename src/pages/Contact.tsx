@@ -51,7 +51,7 @@ const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.1 }}
-            className={`relative border ${link.color} bg-black/80 backdrop-blur-sm p-6 rounded-sm hover:shadow-lg hover:shadow-${link.textColor}/20 transition-all duration-300`}
+            className={`relative border ${link.color} bg-black/80 backdrop-blur-sm p-6 rounded-sm hover:shadow-lg hover:shadow-${link.textColor}/20`}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >

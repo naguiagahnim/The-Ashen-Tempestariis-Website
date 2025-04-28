@@ -58,7 +58,7 @@ const Outils = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.1 }}
-            className="relative border border-vert-tempestarii/30 bg-black/80 backdrop-blur-sm rounded-sm overflow-hidden hover:border-vert-tempestarii/50 transition-all duration-300"
+            className="relative border border-vert-tempestarii/30 bg-black/80 backdrop-blur-sm rounded-sm overflow-hidden hover:border-vert-tempestarii/50"
           >
             <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-vert-tempestarii"></div>
             <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-vert-tempestarii"></div>
