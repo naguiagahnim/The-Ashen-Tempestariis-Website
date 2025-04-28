@@ -31,4 +31,4 @@ The site is live and accessible at: [https://the-ashen-tempestariis.vercel.app/]
 
 ## Credits
 
-Clan logo and Kyrn emblem by Themaninthewall678.
+Clan logo and Kyrn / Héphaï emblems by Themaninthewall678.
