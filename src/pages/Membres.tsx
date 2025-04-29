@@ -71,7 +71,7 @@ const Membres = () => {
             <div className="flex items-center space-x-4">
               <div className="h-16 w-16 rounded-full bg-vert-tempestarii/20 border border-vert-tempestarii/50 overflow-hidden">
                 <img
-                  src={membre.avatar || "/placeholder.svg"}
+                  src={membre.avatar || "/images/emblems/lotus.webp"}
                   alt={membre.name}
                   className="h-full w-full object-cover"
                 />
