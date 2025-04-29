@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { Link, useLocation } from "react-router-dom"
 import { motion, AnimatePresence } from "framer-motion"
-import { Shield, Cpu, Terminal, Handshake, Menu, X, Radiation, Radio } from "lucide-react"
+import { Shield, Cpu, Terminal, Handshake, Menu, X, Radiation, Radio, ShieldUser } from "lucide-react"
 
 export default function HolographicNav() {
   const location = useLocation()
@@ -16,6 +16,7 @@ export default function HolographicNav() {
     { path: "/allies", label: "Alliés", icon: <Handshake className="h-5 w-5" /> },
     { path: "/contact", label: "Transmissions", icon: <Radio className="h-5 w-5" /> },
     { path: "/builds", label: "Arsenal", icon: <Radiation className="h-5 w-5" /> },
+    { path: "/auth", label: "Tenno", icon: <ShieldUser className="h-5 w-5" /> },
   ]
 
   const toggleNav = () => setIsExpanded(!isExpanded)
