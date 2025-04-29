@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { ChevronRight, Shield, Cpu, Handshake, Terminal, Radiation, Radio } from "lucide-react"
+import { ChevronRight, Shield, Cpu, Handshake, Terminal, Radiation, Radio, ShieldUser } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 import Footer from "../components/Footer"
 
@@ -53,6 +53,13 @@ export default function Console() {
       description: "Voir les builds disponibles",
       icon: <Radiation className="h-8 w-8" />,
       route: "/builds",
+    },
+    {
+      id: 7,
+      title: "TENNO",
+      description: "Accéder à votre espace",
+      icon: <ShieldUser className="h-8 w-8" />,
+      route: "/auth",
     },
   ]
 

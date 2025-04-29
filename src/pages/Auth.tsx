@@ -1,11 +1,7 @@
-import {motion} from "framer-motion"
-import Footer from "../components/Footer"
-import { useEffect, useRef } from "react"
 
-
-const Auth = () => {
-    return (
-    )
+export default function Login() {
+  return (
+    <div className="min-h-screen w-full flex items-center justify-center relative overflow-hidden">
+    </div>
+  )
 }
-
-export default Auth
