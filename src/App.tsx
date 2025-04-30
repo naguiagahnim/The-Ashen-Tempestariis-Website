@@ -15,6 +15,7 @@ import Contact from "./pages/Contact.tsx"
 import Builds from "./pages/Builds.tsx"
 import Auth from "./pages/Auth.tsx"
 import AuthSuccess from "./pages/AuthSuccess.tsx"
+import Profile from "./pages/Profile.tsx"
 
 function App() {
   const location = useLocation()
@@ -131,6 +132,7 @@ function App() {
                       <Route path="/builds" element={<Builds />} />
                       <Route path="/auth" element={<Auth />} />
                       <Route path="/authsuccess" element={<AuthSuccess />} />
+                      <Route path="/profile" element={<Profile />} />
                     </Routes>
                   </motion.div>
                 </AnimatePresence>

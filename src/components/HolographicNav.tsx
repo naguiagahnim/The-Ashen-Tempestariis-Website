@@ -16,7 +16,7 @@ export default function HolographicNav() {
     { path: "/allies", label: "Alliés", icon: <Handshake className="h-5 w-5" /> },
     { path: "/contact", label: "Transmissions", icon: <Radio className="h-5 w-5" /> },
     { path: "/builds", label: "Arsenal", icon: <Radiation className="h-5 w-5" /> },
-    { path: "/auth", label: "Tenno", icon: <ShieldUser className="h-5 w-5" /> },
+    { path: "/profile", label: "Tenno", icon: <ShieldUser className="h-5 w-5" /> },
   ]
 
   const toggleNav = () => setIsExpanded(!isExpanded)

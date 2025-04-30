@@ -29,7 +29,7 @@ export default function AuthSuccess() {
         if (userData.user) {
           setUserInfo({
             email: userData.user.email ?? null,
-            username: userData.user.user_metadata?.pseudo || "Tenno",
+            username: userData.user.user_metadata?.pseudo || userData.user.email?.split("@")[0] || "Tenno",
           })
         }
       } catch (error) {

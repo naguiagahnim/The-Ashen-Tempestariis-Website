@@ -59,7 +59,7 @@ export default function Console() {
       title: "TENNO",
       description: "Accéder à votre espace",
       icon: <ShieldUser className="h-8 w-8" />,
-      route: "/auth",
+      route: "/profile",
     },
   ]
 
