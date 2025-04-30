@@ -10,7 +10,7 @@ const categoryIcons = {
   Tank: <Shield className="h-5 w-5" />,
   AoE: <Radiation className="h-5 w-5" />,
   CC: <Target className="h-5 w-5" />,
-  Support: <Zap className="h-5 w-5" />,
+  Supp: <Zap className="h-5 w-5" />,
 }
 
 export default function Builds() {
