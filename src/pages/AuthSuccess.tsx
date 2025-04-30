@@ -184,7 +184,7 @@ export default function AuthSuccess() {
               transition={{ delay: 0.9 }}
             >
               {isSignup
-                ? "Bienvenue à bord du Railjack, Tenno. Votre accès aux systèmes du clan THE ASHEN TEMPESTARIIS a été validé."
+                ? "Bienvenue à bord du Railjack, Tenno. Votre accès aux systèmes du clan THE ASHEN TEMPESTARIIS sera validé après avoir suivi les instructions de la transmission reçue sur votre boîte mail."
                 : "Bon retour parmi nous, Tenno. Votre session a été authentifiée avec succès."}
             </motion.p>
 
