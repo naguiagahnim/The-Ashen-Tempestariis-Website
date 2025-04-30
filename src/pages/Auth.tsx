@@ -4,13 +4,14 @@ import type React from "react"
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Eye, EyeOff, Lock, AlertTriangle, Mail } from "lucide-react"
+import { Eye, EyeOff, Lock, AlertTriangle, Mail, User } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 import { supabase } from "../lib/supabase"
 import Footer from "../components/Footer"
 
-export default function Login() {
+export default function Auth() {
   const [mail, setMail] = useState("")
+  const [pseudo, setPseudo] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState("")
@@ -24,13 +25,17 @@ export default function Login() {
     setIsLoading(true)
 
     try {
-      let data, error
+      let error
       if (isRegisterMode) {
         const result = await supabase.auth.signUp({
           email: mail,
-          password: password
+          password: password,
+          options: {
+            data: {
+              pseudo: pseudo
+            }
+          }
         })
-        data = result.data,
         error = result.error
       }
       else {
@@ -38,14 +43,13 @@ export default function Login() {
           email: mail,
           password: password
         })
-        data = result.data
         error = result.error
       }
       if (error) {
         setError(`${isRegisterMode ? "Inscription" : "Connexion"} échouée : ${error.message}`)
       }
       else {
-        navigate("/success")
+        navigate("/authsuccess", { state: {isSignup: isRegisterMode} })
       }
     }
     catch(err) {
@@ -136,8 +140,26 @@ export default function Login() {
             )}
 
             <div className="space-y-6">
+            {isRegisterMode && (
+                <div className="space-y-2">
+                  <label className="block text-sm text-vert-tempestarii/80 mb-1">Identifiant Tenno</label>
+                  <div className="relative">
+                    <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                      <User size={18} className="text-vert-tempestarii/50" />
+                    </div>
+                    <input
+                      type="text"
+                      value={pseudo}
+                      onChange={(e) => setPseudo(e.target.value)}
+                      className="w-full py-3 pl-10 pr-3 bg-black/50 border border-vert-tempestarii/30 rounded-sm text-white focus:outline-none focus:border-vert-tempestarii/70 focus:ring-1 focus:ring-vert-tempestarii/30 transition-all"
+                      placeholder="Entrez votre identifiant"
+                    />
+                  </div>
+                </div>
+            )}
+
               <div className="space-y-2">
-                <label className="block text-sm text-vert-tempestarii/80 mb-1">Identifiant Tenno</label>
+                <label className="block text-sm text-vert-tempestarii/80 mb-1">Mail Tenno</label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <Mail size={18} className="text-vert-tempestarii/50" />
@@ -147,7 +169,7 @@ export default function Login() {
                     value={mail}
                     onChange={(e) => setMail(e.target.value)}
                     className="w-full py-3 pl-10 pr-3 bg-black/50 border border-vert-tempestarii/30 rounded-sm text-white focus:outline-none focus:border-vert-tempestarii/70 focus:ring-1 focus:ring-vert-tempestarii/30 transition-all"
-                    placeholder="Entrez votre identifiant"
+                    placeholder="Entrez votre mail"
                   />
                 </div>
               </div>

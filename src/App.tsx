@@ -14,6 +14,7 @@ import Allies from "./pages/Allies.tsx"
 import Contact from "./pages/Contact.tsx"
 import Builds from "./pages/Builds.tsx"
 import Auth from "./pages/Auth.tsx"
+import AuthSuccess from "./pages/AuthSuccess.tsx"
 
 function App() {
   const location = useLocation()
@@ -129,6 +130,7 @@ function App() {
                       <Route path="/contact" element={<Contact />} />
                       <Route path="/builds" element={<Builds />} />
                       <Route path="/auth" element={<Auth />} />
+                      <Route path="/authsuccess" element={<AuthSuccess />} />
                     </Routes>
                   </motion.div>
                 </AnimatePresence>
