@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Shield, Crosshair, Radiation, Target, Zap, Plus, Trash2, X, Save, AlertTriangle, CheckCircle } from 'lucide-react'
+import { Shield, Crosshair, Radiation, Target, Plus, Trash2, X, Save, AlertTriangle, CheckCircle, HeartPlus } from 'lucide-react'
 import { supabase } from "../lib/supabase"
 
 interface Stat {
@@ -28,7 +28,7 @@ const categoryIcons = {
   Tank: <Shield className="h-5 w-5" />,
   AoE: <Radiation className="h-5 w-5" />,
   CC: <Target className="h-5 w-5" />,
-  Supp: <Zap className="h-5 w-5" />,
+  Supp: <HeartPlus className="h-5 w-5" />,
 }
 
 export default function BuildForm({ onClose, onSuccess }: BuildFormProps) {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Radiation, ChevronDown, ChevronUp, Shield, Zap, Target, Crosshair } from "lucide-react"
+import { Radiation, ChevronDown, ChevronUp, Shield, Target, Crosshair, HeartPlus } from "lucide-react"
 import Footer from "../components/Footer"
 import { supabase } from "../lib/supabase"
 import BuildForm from "../components/BuildsForm"
@@ -10,7 +10,7 @@ const categoryIcons = {
   Tank: <Shield className="h-5 w-5" />,
   AoE: <Radiation className="h-5 w-5" />,
   CC: <Target className="h-5 w-5" />,
-  Supp: <Zap className="h-5 w-5" />,
+  Supp: <HeartPlus className="h-5 w-5" />,
 }
 
 export default function Builds() {
