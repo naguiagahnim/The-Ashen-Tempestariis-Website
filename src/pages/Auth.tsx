@@ -4,21 +4,56 @@ import type React from "react"
 
 import { useState } from "react"
 import { motion } from "framer-motion"
-import { Eye, EyeOff, Lock, User, AlertTriangle } from "lucide-react"
+import { Eye, EyeOff, Lock, AlertTriangle, Mail } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 import { supabase } from "../lib/supabase"
+import Footer from "../components/Footer"
 
 export default function Login() {
-  const [username, setUsername] = useState("")
+  const [mail, setMail] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [isRegisterMode, setRegisterMode] = useState(false)
   const navigate = useNavigate()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    setError("")
+    setIsLoading(true)
 
+    try {
+      let data, error
+      if (isRegisterMode) {
+        const result = await supabase.auth.signUp({
+          email: mail,
+          password: password
+        })
+        data = result.data,
+        error = result.error
+      }
+      else {
+        const result = await supabase.auth.signInWithPassword({
+          email: mail,
+          password: password
+        })
+        data = result.data
+        error = result.error
+      }
+      if (error) {
+        setError(`${isRegisterMode ? "Inscription" : "Connexion"} échouée : ${error.message}`)
+      }
+      else {
+        navigate("/success")
+      }
+    }
+    catch(err) {
+      setError("Une erreur est survenue.")
+    }
+    finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -26,17 +61,12 @@ export default function Login() {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-black opacity-80"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-70"></div>
-
         <div className="absolute inset-0">
           {[...Array(5)].map((_, i) => (
             <motion.div
               key={i}
               className="absolute h-px bg-vert-tempestarii/30"
-              style={{
-                top: `${15 + i * 20}%`,
-                left: 0,
-                right: 0,
-              }}
+              style={{ top: `${15 + i * 20}%`, left: 0, right: 0 }}
               initial={{ scaleX: 0, opacity: 0 }}
               animate={{
                 scaleX: 1,
@@ -44,22 +74,17 @@ export default function Login() {
                 transition: {
                   duration: 2 + i,
                   delay: i * 0.5,
-                  repeat: Number.POSITIVE_INFINITY,
+                  repeat: Infinity,
                   repeatType: "reverse",
                 },
               }}
             />
           ))}
-
           {[...Array(3)].map((_, i) => (
             <motion.div
               key={`v-${i}`}
               className="absolute w-px bg-vert-tempestarii/30"
-              style={{
-                left: `${20 + i * 30}%`,
-                top: 0,
-                bottom: 0,
-              }}
+              style={{ left: `${20 + i * 30}%`, top: 0, bottom: 0 }}
               initial={{ scaleY: 0, opacity: 0 }}
               animate={{
                 scaleY: 1,
@@ -67,7 +92,7 @@ export default function Login() {
                 transition: {
                   duration: 3 + i,
                   delay: i * 0.7,
-                  repeat: Number.POSITIVE_INFINITY,
+                  repeat: Infinity,
                   repeatType: "reverse",
                 },
               }}
@@ -87,14 +112,15 @@ export default function Login() {
           <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-vert-tempestarii"></div>
           <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-vert-tempestarii"></div>
           <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-vert-tempestarii"></div>
-
           <div className="h-1 w-full bg-gradient-to-r from-transparent via-vert-tempestarii to-transparent"></div>
 
           <div className="p-6 text-center">
             <h1 className="text-2xl font-bold tracking-wider text-vert-tempestarii mb-1">
-              CEPHALON <span className="text-white">POSEIDIS</span>
+              CEPHALON<span className="text-white">POSEIDIS</span>
             </h1>
-            <p className="text-vert-tempestarii/70 text-sm">Système d'authentification sécurisé</p>
+            <p className="text-vert-tempestarii/70 text-sm">
+              {isRegisterMode ? "Créer un nouveau compte Tenno" : "Système d'authentification sécurisé"}
+            </p>
           </div>
 
           <form onSubmit={handleSubmit} className="p-6 pt-2">
@@ -114,12 +140,12 @@ export default function Login() {
                 <label className="block text-sm text-vert-tempestarii/80 mb-1">Identifiant Tenno</label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                    <User size={18} className="text-vert-tempestarii/50" />
+                    <Mail size={18} className="text-vert-tempestarii/50" />
                   </div>
                   <input
                     type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
+                    value={mail}
+                    onChange={(e) => setMail(e.target.value)}
                     className="w-full py-3 pl-10 pr-3 bg-black/50 border border-vert-tempestarii/30 rounded-sm text-white focus:outline-none focus:border-vert-tempestarii/70 focus:ring-1 focus:ring-vert-tempestarii/30 transition-all"
                     placeholder="Entrez votre identifiant"
                   />
@@ -158,11 +184,13 @@ export default function Login() {
                   {isLoading ? (
                     <div className="flex items-center justify-center">
                       <div className="h-5 w-5 border-2 border-t-transparent border-vert-tempestarii/70 rounded-full animate-spin mr-2"></div>
-                      <span>Authentification...</span>
+                      <span>{isRegisterMode ? "Inscription..." : "Authentification..."}</span>
                     </div>
                   ) : (
                     <>
-                      <span className="relative z-10">Connexion au système</span>
+                      <span className="relative z-10">
+                        {isRegisterMode ? "Créer un compte" : "Connexion au système"}
+                      </span>
                       <div className="absolute inset-0 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500 bg-vert-tempestarii/20"></div>
                     </>
                   )}
@@ -170,22 +198,18 @@ export default function Login() {
               </div>
 
               <div className="flex justify-between text-xs text-vert-tempestarii/60 pt-2">
-                <a href="#" className="hover:text-vert-tempestarii transition-colors">
-                  Mot de passe oublié?
-                </a>
-                <a href="#" className="hover:text-vert-tempestarii transition-colors">
-                  Nouveau Tenno?
-                </a>
+                <button
+                  type="button"
+                  onClick={() => setRegisterMode(!isRegisterMode)}
+                  className="hover:text-vert-tempestarii transition-colors"
+                >
+                  {isRegisterMode ? "J'ai déjà un compte" : "Créer un compte Tenno"}
+                </button>
               </div>
             </div>
           </form>
 
-          <div className="p-4 border-t border-vert-tempestarii/20 text-center">
-            <div className="text-xs text-vert-tempestarii/50">
-              <span className="animate-pulse mr-1">◉</span>
-              CONNEXION SÉCURISÉE // RELAIS: EUROPA
-            </div>
-          </div>
+          <Footer />
         </div>
 
         <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-transparent via-vert-tempestarii/30 to-transparent"></div>
