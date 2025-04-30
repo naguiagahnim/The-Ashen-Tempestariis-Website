@@ -10,11 +10,6 @@ interface Stat {
   value: number
 }
 
-interface BuildDetails {
-  mods: string[]
-  stats: Stat[]
-}
-
 interface BuildFormProps {
   onClose: () => void
   onSuccess: () => void
@@ -44,7 +39,6 @@ export default function BuildForm({ onClose, onSuccess }: BuildFormProps) {
   const [mods, setMods] = useState<string[]>([])
   const [currentMod, setCurrentMod] = useState("")
   const [stats, setStats] = useState<Stat[]>(DEFAULT_STATS)
-  const [isPublic, setIsPublic] = useState(false)
 
   const [isLoading, setIsLoading] = useState(false)
   const [notification, setNotification] = useState<{
