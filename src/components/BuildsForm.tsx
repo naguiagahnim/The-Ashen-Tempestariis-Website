@@ -59,7 +59,7 @@ export default function BuildForm({ onClose, onSuccess }: BuildFormProps) {
   }, [])
 
   const handleAddMod = () => {
-    if (currentMod.trim() && !mods.includes(currentMod.trim())) {
+    if (currentMod.trim() && !mods.includes(currentMod.trim()) && mods.length <= 10) {
       setMods([...mods, currentMod.trim()])
       setCurrentMod("")
     }
