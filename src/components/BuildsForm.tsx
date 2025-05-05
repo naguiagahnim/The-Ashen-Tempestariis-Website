@@ -89,7 +89,7 @@ export default function BuildForm({ onClose, onSuccess }: BuildFormProps) {
     if (!user) {
       setNotification({
         type: "error",
-        message: "Vous devez être connecté pour créer un build",
+        message: "Vous devez être connecté.e pour créer un build",
       })
       return
     }
