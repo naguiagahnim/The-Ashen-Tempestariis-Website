@@ -170,7 +170,7 @@ export default function Builds() {
                               <div className="w-48 h-3 bg-vert-tempestarii/10 rounded-full overflow-hidden">
                                 <div 
                                   className="h-full bg-vert-tempestarii" 
-                                  style={{ width: `${(stat.value / 300) * 100}%` }}
+                                  style={{ width: `${(stat.value / 550) * 100}%` }}
                                 ></div>
                               </div>
                               <span className="text-sm text-white w-12 text-right">{stat.value}%</span>

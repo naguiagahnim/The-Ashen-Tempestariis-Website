@@ -310,7 +310,7 @@ export default function BuildForm({ onClose, onSuccess }: BuildFormProps) {
                             <input
                               type="range"
                               min="0"
-                              max="300"
+                              max="550"
                               value={stat.value}
                               onChange={(e) => handleStatChange(index, parseInt(e.target.value))}
                               className="w-full h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-vert-tempestarii"
