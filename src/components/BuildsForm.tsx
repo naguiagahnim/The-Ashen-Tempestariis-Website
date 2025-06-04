@@ -226,6 +226,7 @@ export default function BuildForm({ onClose, onSuccess }: BuildFormProps) {
 
             <form onSubmit={handleSubmit} className="p-6">
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                
                 <div className="space-y-6">
                   <div>
                     <label className="block text-sm text-vert-tempestarii/80 mb-1">
@@ -235,7 +236,7 @@ export default function BuildForm({ onClose, onSuccess }: BuildFormProps) {
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full py-3 px-4 bg-black/50 border border-vert-tempestarii/30 rounded-sm text-vert-tempestarii/50 focus:outline-none focus:border-vert-tempestarii/70 focus:ring-1 focus:ring-vert-tempestarii/30 transition-all"
+                      className="w-full py-3 px-4 bg-black/50 border border-vert-tempestarii/30 rounded-sm text-white focus:outline-none focus:border-vert-tempestarii/70 focus:ring-1 focus:ring-vert-tempestarii/30 transition-all"
                       placeholder="Ex: Revenant - Mesmer Tank"
                       required
                     />
@@ -282,13 +283,14 @@ export default function BuildForm({ onClose, onSuccess }: BuildFormProps) {
                     <textarea
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
-                      className="w-full py-3 px-4 bg-black/50 border border-vert-tempestarii/30 rounded-sm text-vert-tempestarii/50 focus:outline-none focus:border-vert-tempestarii/70 focus:ring-1 focus:ring-vert-tempestarii/30 transition-all"
+                      className="w-full py-3 px-4 bg-black/50 border border-vert-tempestarii/30 rounded-sm text-white focus:outline-none focus:border-vert-tempestarii/70 focus:ring-1 focus:ring-vert-tempestarii/30 transition-all"
                       placeholder="Décrivez votre build..."
                       rows={3}
                     ></textarea>
                   </div>
                 </div>
 
+                
                 <div className="space-y-6">
                   <div>
                     <label className="block text-sm text-vert-tempestarii/80 mb-1 flex items-center gap-2">
@@ -300,7 +302,7 @@ export default function BuildForm({ onClose, onSuccess }: BuildFormProps) {
                         type="text"
                         value={currentMod}
                         onChange={(e) => setCurrentMod(e.target.value)}
-                        className="flex-1 py-3 px-4 bg-black/50 border border-vert-tempestarii/30 rounded-sm text-vert-tempestarii/50 focus:outline-none focus:border-vert-tempestarii/70 focus:ring-1 focus:ring-vert-tempestarii/30 transition-all"
+                        className="flex-1 py-3 px-4 bg-black/50 border border-vert-tempestarii/30 rounded-sm text-white focus:outline-none focus:border-vert-tempestarii/70 focus:ring-1 focus:ring-vert-tempestarii/30 transition-all"
                         placeholder="Nom du mod"
                         onKeyPress={(e) => e.key === "Enter" && (e.preventDefault(), handleAddMod())}
                       />
@@ -356,9 +358,9 @@ export default function BuildForm({ onClose, onSuccess }: BuildFormProps) {
                     <label className="block text-sm text-vert-tempestarii/80 mb-1">Statistiques</label>
                     <div className="space-y-3">
                       {stats.map((stat, index) => (
-                        <div key={index} className="flex items-center">
+                        <div key={index} className="flex items-center gap-2">
                           <span className="w-20 text-white text-sm">{stat.name}</span>
-                          <div className="flex-1 mx-2">
+                          <div className="flex-1">
                             <input
                               type="range"
                               min="0"
@@ -368,13 +370,24 @@ export default function BuildForm({ onClose, onSuccess }: BuildFormProps) {
                               className="w-full h-1 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-vert-tempestarii"
                             />
                           </div>
-                          <span className="w-12 text-right text-vert-tempestarii text-sm">{stat.value}%</span>
+                          <input
+                            type="number"
+                            min="0"
+                            max="550"
+                            value={stat.value}
+                            onChange={(e) =>
+                              handleStatChange(index, Math.max(0, Math.min(550, Number.parseInt(e.target.value) || 0)))
+                            }
+                            className="w-16 py-1 px-2 bg-black/50 border border-vert-tempestarii/30 rounded-sm text-vert-tempestarii text-center text-sm focus:outline-none focus:border-vert-tempestarii/70 focus:ring-1 focus:ring-vert-tempestarii/30 transition-all"
+                          />
+                          <span className="text-vert-tempestarii text-sm">%</span>
                         </div>
                       ))}
                     </div>
                   </div>
                 </div>
 
+                
                 <div className="space-y-6">
                   <div>
                     <label className="block text-sm text-vert-tempestarii/80 mb-1 flex items-center gap-2">
@@ -486,3 +499,4 @@ export default function BuildForm({ onClose, onSuccess }: BuildFormProps) {
     </div>
   )
 }
+
