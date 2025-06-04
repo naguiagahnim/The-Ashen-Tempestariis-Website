@@ -1,6 +1,18 @@
+"use client"
+
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Radiation, ChevronDown, ChevronUp, Shield, Target, Crosshair, HeartPlus } from "lucide-react"
+import {
+  Radiation,
+  ChevronDown,
+  ChevronUp,
+  Shield,
+  Target,
+  Crosshair,
+  HeartIcon as HeartPlus,
+  Zap,
+  Gem,
+} from "lucide-react"
 import Footer from "../components/Footer"
 import { supabase } from "../lib/supabase"
 import BuildForm from "../components/BuildsForm"
@@ -63,18 +75,13 @@ export default function Builds() {
         </button>
       </div>
 
-      {showForm && (
-        <BuildForm
-          onClose={() => setShowForm(false)}
-          onSuccess={handleBuildCreated}
-        />
-      )}
+      {showForm && <BuildForm onClose={() => setShowForm(false)} onSuccess={handleBuildCreated} />}
 
       {isLoading ? (
         <div className="text-vert-tempestarii/70 flex justify-center items-center py-8">
           <motion.div
             animate={{ rotate: 360 }}
-            transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+            transition={{ repeat: Number.POSITIVE_INFINITY, duration: 2, ease: "linear" }}
           >
             <Radiation className="h-8 w-8 text-vert-tempestarii" />
           </motion.div>
@@ -99,7 +106,7 @@ export default function Builds() {
               <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-vert-tempestarii"></div>
               <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-vert-tempestarii"></div>
 
-              <div 
+              <div
                 className="p-4 cursor-pointer hover:bg-vert-tempestarii/10 transition-all duration-300"
                 onClick={() => toggleExpand(build.id)}
               >
@@ -108,7 +115,7 @@ export default function Builds() {
                     <div className="p-2 bg-vert-tempestarii/20 border border-vert-tempestarii/50 rounded-sm">
                       {categoryIcons[build.category as keyof typeof categoryIcons] || <Radiation className="h-5 w-5" />}
                     </div>
-                    
+
                     <div>
                       <h3 className="text-lg font-bold text-vert-tempestarii">{build.name}</h3>
                       <div className="flex items-center space-x-3 mt-1">
@@ -126,7 +133,7 @@ export default function Builds() {
                     <div className="text-right">
                       <div className="text-xs text-gray-400">{build.forma} Forma</div>
                     </div>
-                    
+
                     {expandedBuild === build.id ? (
                       <ChevronUp className="h-5 w-5 text-vert-tempestarii" />
                     ) : (
@@ -134,49 +141,94 @@ export default function Builds() {
                     )}
                   </div>
                 </div>
-                
-                {build.description && (
-                  <p className="text-sm text-gray-400 mt-2">{build.description}</p>
-                )}
+
+                {build.description && <p className="text-sm text-gray-400 mt-2">{build.description}</p>}
               </div>
 
               <AnimatePresence>
                 {expandedBuild === build.id && (
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
                     transition={{ duration: 0.3 }}
                     className="border-t border-vert-tempestarii/20 p-4"
                   >
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      <div>
-                        <h4 className="text-sm text-vert-tempestarii/80 mb-2">Mods utilisés</h4>
-                        <div className="grid grid-cols-2 gap-2">
-                          {build.details.mods.map((mod: string, index: number) => (
-                            <div key={index} className="text-sm bg-vert-tempestarii/10 border border-vert-tempestarii/20 px-2 py-1 rounded-sm">
-                              {mod}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <h4 className="text-sm text-vert-tempestarii/80 mb-2">Statistiques</h4>
-                        <div className="space-y-2">
-                          {build.details.stats.map((stat: any, index: number) => (
-                            <div key={index} className="flex items-center justify-between">
-                              <span className="text-sm text-gray-400">{stat.name}</span>
-                              <div className="w-48 h-3 bg-vert-tempestarii/10 rounded-full overflow-hidden">
-                                <div 
-                                  className="h-full bg-vert-tempestarii" 
-                                  style={{ width: `${(stat.value / 550) * 100}%` }}
-                                ></div>
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                      <div className="space-y-6">
+                        <div>
+                          <h4 className="text-sm text-vert-tempestarii/80 mb-2 flex items-center gap-2">
+                            <Radiation className="h-4 w-4" />
+                            Mods utilisés
+                          </h4>
+                          <div className="grid grid-cols-2 gap-2">
+                            {build.details.mods.map((mod: string, index: number) => (
+                              <div
+                                key={index}
+                                className="text-sm bg-vert-tempestarii/10 border border-vert-tempestarii/20 px-2 py-1 rounded-sm"
+                              >
+                                {mod}
                               </div>
-                              <span className="text-sm text-white w-12 text-right">{stat.value}%</span>
-                            </div>
-                          ))}
+                            ))}
+                          </div>
                         </div>
+
+                        {build.details.archon_shards && (
+                          <div>
+                            <h4 className="text-sm text-vert-tempestarii/80 mb-2 flex items-center gap-2">
+                              <Gem className="h-4 w-4" />
+                              Archon Shards
+                            </h4>
+                            <div className="text-sm bg-purple-900/20 border border-purple-500/30 px-3 py-2 rounded-sm text-purple-200">
+                              {build.details.archon_shards}
+                            </div>
+                          </div>
+                        )}
+                      </div>
+
+                      <div className="space-y-6">
+                        <div>
+                          <h4 className="text-sm text-vert-tempestarii/80 mb-2">Statistiques</h4>
+                          <div className="space-y-2">
+                            {build.details.stats.map((stat: any, index: number) => (
+                              <div key={index} className="flex items-center justify-between">
+                                <span className="text-sm text-gray-400">{stat.name}</span>
+                                <div className="w-32 h-2 bg-vert-tempestarii/10 rounded-full overflow-hidden">
+                                  <div
+                                    className="h-full bg-vert-tempestarii"
+                                    style={{ width: `${(stat.value / 550) * 100}%` }}
+                                  ></div>
+                                </div>
+                                <span className="text-sm text-white w-12 text-right">{stat.value}%</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {build.details.arcanes && build.details.arcanes.length > 0 && (
+                          <div>
+                            <h4 className="text-sm text-vert-tempestarii/80 mb-2 flex items-center gap-2">
+                              <Zap className="h-4 w-4" />
+                              Arcanes
+                            </h4>
+                            <div className="space-y-2">
+                              {build.details.arcanes.map((arcane: any, index: number) => (
+                                <div
+                                  key={index}
+                                  className="bg-orange-900/20 border border-orange-500/30 px-3 py-2 rounded-sm"
+                                >
+                                  <div className="flex items-center justify-between">
+                                    <span className="text-sm font-medium text-orange-200">{arcane.name}</span>
+                                    <span className="text-xs text-orange-300">Rang {arcane.rank}</span>
+                                  </div>
+                                  {arcane.description && (
+                                    <p className="text-xs text-orange-200/70 mt-1">{arcane.description}</p>
+                                  )}
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </motion.div>
