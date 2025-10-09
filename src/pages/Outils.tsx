@@ -15,8 +15,8 @@ const tools = [
       "Et bien d'autre à venir..."
     ],
     linkToRepo: "https://github.com/naguiagahnim/CephalonPoseidis",
-    status: "Hors-ligne",
-    statusColor: "red"
+    status: "En ligne",
+    statusColor: "green"
   },
 
   {
