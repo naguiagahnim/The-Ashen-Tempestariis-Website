@@ -27,7 +27,7 @@
 ## About
 This site serves as the digital hub for our Warframe clan, designed with a futuristic Railjack console theme. It features a showcase of clan members, our allied clans, and the tools developed by me for our community. You'll also find our social media links, a contact form, and a collection of member-built Warframe builds.
 
-The site is live and accessible at: [https://the-ashen-tempestariis.vercel.app/](https://the-ashen-tempestariis.vercel.app/).
+The site is live and accessible at: [https://the-ashen-tempestariis.agahnim.dev/](https://the-ashen-tempestariis.agahnim.dev/).
 
 ## Credits
 
